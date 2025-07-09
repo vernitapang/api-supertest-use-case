@@ -39,4 +39,16 @@ describe('User API tests', function() {
       });
     expect(response.status).to.equal(200);
   });
+  
+  it('should retrieve a specific user by email', async function() {
+    const response = await api.get('/users?email=jane.doe@example.com');
+    expect(response.status).to.equal(200);
+    expect(response.body[0]).to.include.keys('id', 'name', 'email');
+  });
+
+  it('should retrieve a specific user by name', async function() {
+    const response = await api.get('/users?name=John Doe');
+    expect(response.status).to.equal(200);
+    expect(response.body[0]).to.include.keys('id', 'name', 'email');
+  });
 });
