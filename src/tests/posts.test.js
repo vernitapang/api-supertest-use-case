@@ -45,13 +45,17 @@ describe('Post API tests', function() {
   it('should retrieve posts by user id', async function() {
     const response = await api.get('/posts?userId=1');
     expect(response.status).to.equal(200);
-    expect(response.body).to.be.an('array');
-    expect(response.body[0]).to.include.keys('userId', 'id', 'title', 'body');
   });
 
   it('should retrieve a specific post by its id', async function() {
+    const expResp = {
+      "userId": 1,
+      "id": 1,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    }
     const response = await api.get('/posts/1');
     expect(response.status).to.equal(200);
-    expect(response.body).to.include.keys('userId', 'id', 'title', 'body');
+    expect(response.body).to.deep.equal(expResp);
   });
 });

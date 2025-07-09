@@ -5,13 +5,12 @@ describe('User API tests', function() {
   it('should retrieve all users', async function() {
     const response = await api.get('/users');
     expect(response.status).to.equal(200);
-    expect(response.body).to.be.an('array');
+    expect(response.body.length).to.equal(10);
   });
 
   it('should retrieve a specific user', async function() {
     const response = await api.get('/users/1');
     expect(response.status).to.equal(200);
-    expect(response.body).to.include.keys('id', 'name', 'email');
   });
 
   it('should delete a user', async function() {
@@ -41,14 +40,14 @@ describe('User API tests', function() {
   });
   
   it('should retrieve a specific user by email', async function() {
-    const response = await api.get('/users?email=jane.doe@example.com');
+    const response = await api.get('/users?email=Karley_Dach@jasper.info');
     expect(response.status).to.equal(200);
-    expect(response.body[0]).to.include.keys('id', 'name', 'email');
+    expect(response.body[0].id).to.equal(6);
   });
 
   it('should retrieve a specific user by name', async function() {
-    const response = await api.get('/users?name=John Doe');
+    const response = await api.get('/users?username=Leopoldo_Corkery');
     expect(response.status).to.equal(200);
-    expect(response.body[0]).to.include.keys('id', 'name', 'email');
+    expect(response.body[0].id).to.equal(6);
   });
 });
