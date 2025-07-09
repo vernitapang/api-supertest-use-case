@@ -40,4 +40,18 @@ describe('Post API tests', function() {
     const response = await api.delete('/posts/1');
     expect(response.status).to.equal(200);
   });
+
+  
+  it('should retrieve posts by user id', async function() {
+    const response = await api.get('/posts?userId=1');
+    expect(response.status).to.equal(200);
+    expect(response.body).to.be.an('array');
+    expect(response.body[0]).to.include.keys('userId', 'id', 'title', 'body');
+  });
+
+  it('should retrieve a specific post by its id', async function() {
+    const response = await api.get('/posts/1');
+    expect(response.status).to.equal(200);
+    expect(response.body).to.include.keys('userId', 'id', 'title', 'body');
+  });
 });
