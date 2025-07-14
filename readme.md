@@ -8,6 +8,7 @@ This project is a basic boilerplate for testing APIs using [SuperTest](https://g
 - ✅ Node.js (with ES Modules)
 - ✅ [SuperTest](https://github.com/visionmedia/supertest) – for HTTP assertions
 - ✅ [Chai](https://www.chaijs.com/) – for expressive assertions
+- ✅ [Mochawesome](https://github.com/adamgruber/mochawesome-report-generator) - generates a full fledged HTML/CSS report
 
 ---
 
